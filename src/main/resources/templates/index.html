@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather4U</title>
+</head>
+<body>
+<h3>Weather</h3>
+Temperature: <a th:text="${current.getTemperature()}"/>
+Wind: <a th:text="${current.getWind()}"></a>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Temperature</th>
+        <th>Wind Speed</th>
+        <th>Time</th>
+    </tr>
+    <tr th:each="reading : ${previous}">
+        <td th:text="${previous.indexOf(reading)+1}"/>
+        <td><a th:text="${reading.getTemperature()}"/> °C</td>
+        <td><a th:text="${reading.getTemperature()}"/> Km/h</td>
+        <td th:text="${#temporals.format(reading.getDate(),'yyyy-MM-dd HH-mm')}"/>
+    </tr>
+</table>
+
+</body>
+</html>
